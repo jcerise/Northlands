@@ -51,10 +51,12 @@ pub struct GameMap {
 
 impl GameMap {
     pub fn new() -> Self {
-        let grass_tile: TileType = rand::random();
+        let mut rand_tiles: Vec<Tile> = Vec::new();
+        for i in 0..NUM_TILES {
+            rand_tiles.push(Tile::from_tile_type(rand::random()));
+        }
         Self{
-            tiles: vec![
-                Tile::from_tile_type(grass_tile); NUM_TILES]
+            tiles: rand_tiles
         }
     }
 
